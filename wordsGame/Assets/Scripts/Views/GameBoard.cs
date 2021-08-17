@@ -27,7 +27,6 @@ public class GameBoard : MonoBehaviour
     private Tile[,] allTiles;
     private LetterData[,] allLetterData;
     public GameObject wordHolder;
-
     public LetterPooler letterPooler;
     
     void Start()
@@ -66,7 +65,6 @@ public class GameBoard : MonoBehaviour
          Tile[] tiles = FindObjectsOfType<Tile>();
          foreach (Tile t in tiles)
          {
-          //   GameObject.Destroy(t.gameObject);
           letterPooler.AddToPool(t.gameObject);
          }
         
@@ -79,21 +77,17 @@ public class GameBoard : MonoBehaviour
         {
             for (int j = 0; j < height; j++)
             {
-              //  GameObject tileGO = Instantiate(TilePrefab, this.transform);
-              
-              GameObject tileGO = letterPooler.GetFromPool();
-              tileGO.transform.SetParent(this.transform);
-              tileGO.transform.localPosition=Vector3.zero;
-              tileGO.SetActive(true);
-
-
-              LetterData letterData = GameLogic.GetRandomLetterData();
+                GameObject tileGO = letterPooler.GetFromPool();
+                tileGO.transform.SetParent(this.transform);
+                tileGO.transform.localPosition = Vector3.zero;
+                tileGO.SetActive(true);
+                LetterData letterData = GameLogic.GetRandomLetterData();
                 Tile tile = tileGO.GetComponent<Tile>();
                 tile.x = i;
                 tile.y = j;
                 tile.SetData(letterData);
                 tileGO.name = $"X={tile.x};Y={tile.y}";
-                Vector3 finPosition=GetTilePosition(i,j);
+                Vector3 finPosition = GetTilePosition(i, j);
                 Vector3 stPosition = finPosition + tilePositionYOffset;
                 tileGO.transform.localPosition = stPosition;
                 float moveDuration = Random.Range(.2f, .4f);
@@ -220,15 +214,10 @@ public class GameBoard : MonoBehaviour
             {
                 finPosition.x += (tileScale + space);    
             }
-            
-            
-            
             Sequence sequence = DOTween.Sequence();
             sequence.Append(t.transform.DOLocalMove(finPosition, duration));
             sequence.Insert(0, t.transform.DOScale(tileScale, duration));
             sequence.Play();
-            
-            //t.transform.DOLocalMove(Vector3.zero, duration).onComplete();
             i++;
         }
         GameManager.Instance.AddScore(score);
@@ -245,9 +234,7 @@ public class GameBoard : MonoBehaviour
             Tile t = GetTileByString(c.ToString());
             res.Add(t);
         }
-
         return res;
-
     }
 
     private Tile GetTileByString(string letterString)
@@ -259,14 +246,8 @@ public class GameBoard : MonoBehaviour
                 return t;
             }
         }
-
         return null;
     }
-
-
-    
-    
-    
 
     private string GetCurrentLetters()
     {
@@ -280,9 +261,4 @@ public class GameBoard : MonoBehaviour
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

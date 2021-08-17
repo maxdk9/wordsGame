@@ -38,9 +38,7 @@ public class MainMenuUIManager : MonoBehaviour
         GameManager.UpdateLevelEvent.AddListener(UpdateLelveCounter);
         GameManager.UpdateScoreEvent.AddListener(UpdateScoreCounter);
         GameBoard.BlockLevelEvent.AddListener(activateBlockImage);
-        GameBoard.WinLevelEvent.AddListener(deactivateBlockImage);
-
-        
+        GameBoard.WinLevelEvent.AddListener(deactivateBlockImage); 
         GameBoard.EndNoWordsEvent.AddListener(deactivateNoWordsWindow);
         GameBoard.NoWordsEvent.AddListener(activateNoWordsWindow);
         

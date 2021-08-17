@@ -70,7 +70,6 @@ using UnityRandom=UnityEngine.Random;
             catch (Exception e)
             {
                 Debug.Log("Error in char "+s.ToString());
-                Debug.Log(e.Message);
             }
 
             return 0;

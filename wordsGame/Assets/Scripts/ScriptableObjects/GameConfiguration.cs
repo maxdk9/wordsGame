@@ -13,9 +13,4 @@ namespace Config
         [SerializeField] public LetterData[] LetterArray;
         [SerializeField] public int AdReward;
     }
-    
-    
-    
-    
-    
 }

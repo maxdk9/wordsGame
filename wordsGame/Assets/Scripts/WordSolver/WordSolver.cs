@@ -32,17 +32,6 @@ public class WordSolver : Singleton<WordSolver>
             scoreDictionary.Add(pair.Key,WordScore(pair.Key));
             
         }));
-
-        int qindarScore = this.WordScoreFromDictionary("qindar");
-        Debug.Log(qindarScore);
-
-        // wordDictionary.ToList().ForEach((pair =>
-         // {
-         //     wordStatDictionary.Add(pair.Key,new WordStat(WordScore(pair.Key),pair.Value));
-         //     
-         // }));
-        
-        string t = "";
     }
 
     public string GetWordMaxLength(string currentLetters)
